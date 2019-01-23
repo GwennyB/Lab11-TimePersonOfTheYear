@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TimePersonOfTheYear.Controllers;
+using TimePersonOfTheYear.Models;
 
 namespace TimePersonOfTheYear.Controllers
 {
@@ -13,27 +10,19 @@ namespace TimePersonOfTheYear.Controllers
         public IActionResult Index()
         {
             return View();
-
         }
 
         [HttpPost]
         public IActionResult Index(int startYear, int endYear)
         {
-            List<string> winners = new List<string> { "", "" };
-
-            return RedirectToAction("Results", winners);
+            return RedirectToAction("Results", new { startYear, endYear });
         }
 
-        [HttpGet]
-        public IActionResult Result(List<string> winners)
+        public IActionResult Results(int startYear, int endYear)
         {
-            return View();
+            List<TimePerson> winners = TimePerson.GetPersons(startYear, endYear);
+            return View(winners);
         }
 
-        //// model binding example
-        //public string Balloon(int numberOfBalloons)
-        //{
-        //    return $"You have {numberOfBalloons} balloons";
-        //}
     }
 }

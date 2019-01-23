@@ -4,14 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace TimePersonOfTheYear.Models
 {
     public class TimePerson
     {
-        private static string path = Environment.CurrentDirectory;
-        private static string fullPath = Path.GetFullPath(Path.Combine(path, @"personOfTheYear.csv"));
-
-
+        private static string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../wwwroot/personOfTheYear.csv");
 
         public int Year { get; set; }
         public string Honor { get; set; }
@@ -41,15 +39,24 @@ namespace TimePersonOfTheYear.Models
             //moe.Honor = "moest cat";
             //moe.Category = "moe peeps";
             List<TimePerson> winners = MakePeople(ReadFile());
+            var filtered = from winner in winners
+                         where winner.Year >= startYear && winner.Year <= endYear
+                         select winner;
+
+            List<TimePerson> winnersInRange = new List<TimePerson>();
+            foreach (TimePerson winner in filtered)
+            {
+                winnersInRange.Add(winner);
+            }
 
             // TODO: query data source, build objects, populate list
 
-            return winners;
+            return winnersInRange;
         }
 
         private static string[] ReadFile()
         {
-            string[] rawData = File.ReadAllLines(fullPath);
+            string[] rawData = File.ReadAllLines(path);
             return rawData;
         }
 

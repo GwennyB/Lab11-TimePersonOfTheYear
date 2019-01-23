@@ -1,0 +1,35 @@
+﻿@model List<TimePersonOfTheYear.Models.TimePerson>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TIME Person Of The Year</title>
+</head>
+<body>
+    <header>
+        <h1> T I M E </h1>
+    </header>
+    <main>
+        <h2>Winners for the selected years:</h2>
+        <table>
+            <tr>
+                <th>YEAR</th>
+                <th>NAME</th>
+                <th>HONOR</th>
+                <th>CATEGORY</th>
+            </tr>
+            @foreach (var winner in Model)
+            {
+                <tr>
+                    <td>@winner.Year</td>
+                    <td>@winner.Name</td>
+                    <td>@winner.Honor</td>
+                    <td>@winner.Category</td>
+                </tr>
+            }
+
+        </table>
+    </main>
+    <footer></footer>
+</body>
+</html>

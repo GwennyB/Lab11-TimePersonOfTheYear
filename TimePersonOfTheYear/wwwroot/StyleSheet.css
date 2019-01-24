@@ -1,0 +1,40 @@
+﻿body {
+    background-color: firebrick;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+div {
+    width: 800px;
+    margin: 50px auto;
+    border: 10px solid white;
+}
+
+h1 {
+    font-size: 200px;
+    margin-bottom: 100px;
+}
+
+h2 {
+    font-size: 65px;
+    margin-bottom: 100px;
+}
+
+form {
+    margin-bottom: 50px;
+}
+
+table {
+    margin: 20px auto;
+}
+
+td {
+    padding: 5px 50px;
+    font-size: 20px;
+}
+
+th {
+    padding-bottom: 20px;
+    font-size: 30px;
+}

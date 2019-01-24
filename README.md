@@ -19,5 +19,11 @@ The MODEL consists of a single custom class ('TimePerson') which contains proper
 The CONTROLLER serves (HttpGet) the Index page initially (renders the 'Index' HTML template). On form submit (HttpPost), it redirects to the 'Results' action. The 'Results' action calls on the TimePerson class to dig all the data out of the data file, convert it to useable format, filter it according to the user's specifications, and return a list of objects that pass the filter. It then serves a rendered table of results (HttpGet) using the 'Results' HTML template.
 
 # Visuals
+Home page at initial load:
 ![Splash](assets/splash-view.PNG)
-![Splash](assets/results-view.PNG)
+
+Search parameters entered and ready to submit:
+![User Inputs](assets/enter-search-params.PNG)
+
+Results page from above search parameters:
+![Results](assets/results-view.PNG)
